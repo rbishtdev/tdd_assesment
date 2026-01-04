@@ -1,3 +1,4 @@
+import 'delimeter_parser.dart';
 import 'exception.dart';
 
 int add(String number) {
@@ -5,32 +6,20 @@ int add(String number) {
     return 0;
   }
 
-  String delimiterPattern = r'[,\n]';
-  String numberSection = number;
+  final delimiterPattern = DelimiterParser.extractPattern(number);
+  final numberSection = DelimiterParser.extractNumberSection(number);
 
-  if (number.startsWith('//')) {
-    final lines = number.split('\n');
-    final delimiterLine = lines[0];
+  final values = numberSection
+      .split(RegExp(delimiterPattern))
+      .map(int.parse)
+      .toList();
 
-    if (delimiterLine.startsWith('//[')) {
-      delimiterPattern = RegExp.escape(
-        delimiterLine.substring(3, delimiterLine.length - 1),
-      );
-    } else {
-      delimiterPattern = RegExp.escape(delimiterLine.substring(2));
-    }
-
-    numberSection = lines[1];
-  }
-
-  final parts = numberSection.split(RegExp(delimiterPattern));
-  final values = parts.map(int.parse).toList();
   final negatives = values.where((n) => n < 0).toList();
   if (negatives.isNotEmpty) {
     throw NegativeNumbersException(negatives);
   }
-  return parts
-         .map(int.parse)
-         .where((n) => n <= 1000)
-         .reduce((a, b) => a + b);
+
+  return values
+      .where((n) => n <= 1000)
+      .fold(0, (sum, n) => sum + n);
 }
