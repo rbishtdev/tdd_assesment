@@ -21,4 +21,8 @@ void main() {
   test('supports new lines between numbers', () {
     expect(add('1\n2,3,4\n5'), 15);
   });
+
+  test('supports different delimiter', () {
+    expect(add('//;\n1;2;5'), 8);
+  });
 }
