@@ -1,5 +1,5 @@
 import 'delimeter_parser.dart';
-import 'exception.dart';
+import 'exceptions/exception.dart';
 
 int add(String number) {
   if(number.isEmpty) {
