@@ -1,3 +1,5 @@
+import 'exception.dart';
+
 int add(String number) {
   if(number.isEmpty) {
     return 0;
@@ -25,9 +27,7 @@ int add(String number) {
   final values = parts.map(int.parse).toList();
   final negatives = values.where((n) => n < 0).toList();
   if (negatives.isNotEmpty) {
-    throw Exception(
-      'negative numbers not allowed ${negatives.join(',')}',
-    );
+    throw NegativeNumbersException(negatives);
   }
   return parts
          .map(int.parse)
