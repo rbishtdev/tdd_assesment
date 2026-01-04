@@ -4,9 +4,5 @@ int add(String number) {
   }
 
   final parts = number.split(',');
-  if (parts.length == 1) {
-    return int.parse(parts[0]);
-  }
-
-  return int.parse(parts[0]) + int.parse(parts[1]);
+  return parts.map(int.parse).reduce((a, b) => a + b);
 }
