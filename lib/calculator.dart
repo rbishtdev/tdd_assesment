@@ -20,5 +20,8 @@ int add(String number) {
       'negative numbers not allowed ${negatives.join(',')}',
     );
   }
-  return parts.map(int.parse).reduce((a, b) => a + b);
+  return parts
+         .map(int.parse)
+         .where((n) => n <= 1000)
+         .reduce((a, b) => a + b);
 }
