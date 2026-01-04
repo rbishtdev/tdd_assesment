@@ -8,7 +8,16 @@ int add(String number) {
 
   if (number.startsWith('//')) {
     final lines = number.split('\n');
-    delimiterPattern = RegExp.escape(lines[0].substring(2));
+    final delimiterLine = lines[0];
+
+    if (delimiterLine.startsWith('//[')) {
+      delimiterPattern = RegExp.escape(
+        delimiterLine.substring(3, delimiterLine.length - 1),
+      );
+    } else {
+      delimiterPattern = RegExp.escape(delimiterLine.substring(2));
+    }
+
     numberSection = lines[1];
   }
 
