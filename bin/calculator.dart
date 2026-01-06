@@ -1,5 +1,5 @@
-import 'package:calculator/calculator.dart' as calculator;
+import 'package:calculator/calculator.dart';
 
 void main(List<String> arguments) {
-  print(calculator.add('1,2,7'));
+  print(StringCalculator().add('1,2,7'));
 }
