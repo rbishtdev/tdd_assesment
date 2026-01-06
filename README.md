@@ -65,6 +65,18 @@ This approach strictly follows **TDD principles** and keeps the code readable an
 
 ---
 
+## 🧪 TDD Commit Strategy
+
+This project follows the Red–Green–Refactor cycle:
+
+- **RED**: Each feature starts with a failing test (`test: add ...`)
+- **GREEN**: The minimal implementation is added next (`feat: ...`)
+- **REFACTOR**: Cleanup commits improve structure without changing behavior
+
+While commits are labeled using conventional `test:` and `feat:` prefixes, each test commit precedes its corresponding implementation commit, demonstrating strict test-first development.
+
+---
+
 ## Test Result
 
 ![Test Results](screenshots/test_results.png)
