@@ -16,26 +16,21 @@ class StringCalculator {
     if (negatives.isNotEmpty) {
       throw Exception('negative numbers not allowed ${negatives.join(',')}');
     }
-
     return values.where((n) => n <= 1000).fold(0, (sum, n) => sum + n);
   }
 
-  static String defaultPattern = r'[,\n]';
-
   static String extractPattern(String input) {
     if (!input.startsWith('//')) {
-      return defaultPattern;
+      return r'[,\n]';
     }
 
-    final delimiterLine = input
-        .split('\n')
-        .first;
+    final delimiterLine = input.split('\n').first;
 
     if (delimiterLine.startsWith('//[')) {
       return RegExp.escape(
-          delimiterLine.substring(3, delimiterLine.length - 1));
+        delimiterLine.substring(3, delimiterLine.length - 1),
+      );
     }
-
     return RegExp.escape(delimiterLine.substring(2));
   }
 
