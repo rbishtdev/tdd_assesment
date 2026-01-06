@@ -1,5 +1,4 @@
 import 'delimeter_parser.dart';
-import 'exceptions/exception.dart';
 
 int add(String number) {
   if(number.isEmpty) {
@@ -16,7 +15,9 @@ int add(String number) {
 
   final negatives = values.where((n) => n < 0).toList();
   if (negatives.isNotEmpty) {
-    throw NegativeNumbersException(negatives);
+    throw Exception(
+      'negative numbers not allowed ${negatives.join(',')}',
+    );
   }
 
   return values
