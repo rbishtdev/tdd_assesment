@@ -56,6 +56,49 @@ This approach strictly follows **TDD principles** and keeps the code readable an
 
 ---
 
+## Why TDD?
+
+Test-Driven Development helps you:
+
+- Write **only the code that is needed**
+- Catch edge cases early
+- Refactor safely with confidence
+- Build self-documenting APIs
+- Avoid over-engineering
+
+> In this project, **every feature begins with a failing test** before implementation.
+
+---
+
+## ✨ Features Implemented
+
+| # | Feature                        | Example Input          | Output      |
+|---|--------------------------------|------------------------|-------------|
+| 1 | Empty string returns zero      | `""`                   | `0`         |
+| 2 | Single number                  | `"1"`                  | `1`         |
+| 3 | Two numbers                    | `"1,2"`                | `3`         |
+| 4 | Unknown amount of numbers      | `"1,2,3,4"`            | `10`        |
+| 5 | Newline delimiter              | `"1\n2,3"`             | `6`         |
+| 6 | Custom delimiter               | `"//;\n1;2"`           | `3`         |
+| 7 | Multiple negatives throw error | `"1,-2,-3"`            | ❌ Exception |
+| 8 | Ignore numbers > 1000          | `"2,1001"`             | `2`         |
+| 9 | Delimiter of any length        | `"//[***]\n1***2***3"` | `6`         |
+
+---
+
+## Usage Examples
+
+
+final calculator = StringCalculator();
+
+calculator.add("");                  // 0
+calculator.add("1");                 // 1
+calculator.add("1,2");               // 3
+calculator.add("1\n2,3");            // 6
+calculator.add("//[***]\n1***2***3");// 6
+
+---
+
 ## Project Structure
 
 - lib/
@@ -82,6 +125,18 @@ While commits are labeled using conventional `test:` and `feat:` prefixes, each 
 ![Test Results](screenshots/test_results.png)
 
 ---
+
+## Author
+
+- Rajendra Bisht
+- Senior Flutter / Dart Engineer
+
+- Clean Architecture
+- TDD & SOLID
+
+🔗 GitHub: https://github.com/rbishtdev
+
+🔗 LinkedIn: https://www.linkedin.com/in/r-bisht/
 
 ## Running Tests
 
